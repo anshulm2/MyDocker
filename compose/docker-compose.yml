@@ -6,6 +6,8 @@ services:
      volumes:
        - /home/testdir/:/var/lib/mysql
      restart: always
+     networks:
+       - customnet
      environment:
        MYSQL_ROOT_PASSWORD: somewordpress
        MYSQL_DATABASE: wordpress
@@ -17,3 +19,7 @@ services:
       image: instavote/vote
       ports:
         - 80:80
+
+networks:
+  customnet:
+    driver: bridge
